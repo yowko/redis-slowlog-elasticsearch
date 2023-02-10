@@ -1,0 +1,15 @@
+filebeat.modules:
+- module: redis
+  log:
+    enabled: false
+  slowlog:
+    enabled: true
+    var.hosts: ["redis:6379"]
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /var/log/*.log
+output.elasticsearch:
+  enabled: true
+  hosts: ["http://elasticsearch:9200"]
